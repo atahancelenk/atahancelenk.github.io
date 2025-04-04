@@ -6,22 +6,18 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
     <title>Şinasi Atahan Çelenk</title>
 </head>
 <body>
     <div class="rain rain-left"></div>
     <div class="rain rain-right"></div>
-
-    <div class="toggle-container" onclick="toggleLanguage()">
-        <div id="toggle-ball">🇹🇷</div>
-        <div class="toggle-labels">
-            <span>🇹🇷</span>
-            <span>en</span>
-        </div>
-    </div>
     
     <div class="section">
+        <div class="language-toggle-top-left">
+            <div class="toggle-container" onclick="toggleLanguage()">
+                <div id="toggle-ball">🇹🇷</div>
+            </div>
+        </div>
         <div class="box-header">
             <h2>Şinasi Atahan Çelenk</h2>
             <br>
@@ -36,7 +32,7 @@
         </div>
         <p data-en="I am a senior Computer Engineering student focused on data science. I have completed courses in 
         statistics, mathematics, probability, machine learning, and deep learning."
-        data-tr="Veri bilimi üzerine yoğunlaşmış bir bilgisayar mühendisliği son sınıf öğrencisiyim. 
+        data-tr="Veri bilimi üzerine yoğunlaşmış bilgisayar mühendisliği son sınıf öğrencisiyim. 
         İstatistik, matematik, olasılık, makine öğrenimi ve derin öğrenim derslerini tamamladım.">
         </p>
     </div>
@@ -48,10 +44,10 @@
         </p>
         <div id="skills-icons">
             <i class="fa-brands fa-python skill-icon"></i>
-            <img src="img/tableau.png" class="skill-icon icon-img">
-            <img src="img/pandas.ico" class="skill-icon icon-img">
-            <img src="img/numpy.png" class="skill-icon icon-img">
-            <img src="img/tensorflow.png" class="skill-icon icon-img">
+            <img src="img/tableau.png" class="skill-icon">
+            <img src="img/pandas.ico" class="skill-icon">
+            <img src="img/numpy.png" class="skill-icon">
+            <img src="img/tensorflow.png" class="skill-icon" style="width: 60px; height: 60px;" />
         </div>
     </div>
     
@@ -61,16 +57,17 @@
         data-tr="Üzerinde çalıştığım projelerim.">
         </p>
         <ul class="horizontal-list">
-            <li><a href="https://github.com/atahancelenk"><h3>Project 1: Data Analysis</a></h3>
-            <p>In this project, I analyzed a dataset using Python and Pandas.</p>
+            <li><a href="https://github.com/atahancelenk"><h3>Data Analysis</a></h3>
+            <p data-en="In this project, I analyzed a dataset using Python and Pandas."
+            data-tr="Bu projede, Python ve Pandas kullanarak bir veri setini analiz ettim."></p>
             </li>
-            <br>
-            <li><a href="https://github.com/atahancelenk"><h3>Project 2: Self AIthlete</a></h3>
-            <p>It is an AI-powered health and fitness website for a graduation project.</p>
+            <li><a href="https://github.com/atahancelenk"><h3>Self AIthlete</a></h3>
+            <p data-en="It is an AI-powered health and fitness website for a graduation project."
+            data-tr="Bitirme projesi için yapay zeka destekli sağlık ve fitness web sitesidir."></p>
             </li>
-
         </ul>
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
