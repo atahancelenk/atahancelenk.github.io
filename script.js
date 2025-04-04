@@ -1,7 +1,7 @@
 const icons = document.querySelectorAll('.skill-icon');
 const container = document.getElementById('skills-icons');
-const containerWidth = container.offsetWidth;
-const containerHeight = container.offsetHeight;
+let containerWidth = container.offsetWidth;
+let containerHeight = container.offsetHeight;
 
 const iconSize = 40;
 const iconData = [];
@@ -21,7 +21,7 @@ icons.forEach(icon => {
     });
 });
 
-// Icon Animation
+// Icons Animation Function
 function animateIcons() {
     for (let i = 0; i < iconData.length; i++) {
         let a = iconData[i];
@@ -29,21 +29,11 @@ function animateIcons() {
         a.x += a.dx;
         a.y += a.dy;
 
-        if (a.x <= 0) {
-            a.x = 0;
-            a.dx *= -1;
-        } else if (a.x >= containerWidth - iconSize) {
-            a.x = containerWidth - iconSize;
-            a.dx *= -1;
-        }
+        if (a.x <= 0 || a.x >= containerWidth - iconSize) a.dx *= -1;
+        if (a.y <= 0 || a.y >= containerHeight - iconSize) a.dy *= -1;
 
-        if (a.y <= 0) {
-            a.y = 0;
-            a.dy *= -1;
-        } else if (a.y >= containerHeight - iconSize) {
-            a.y = containerHeight - iconSize;
-            a.dy *= -1;
-        }
+        a.x = Math.max(0, Math.min(a.x, containerWidth - iconSize));
+        a.y = Math.max(0, Math.min(a.y, containerHeight - iconSize));
 
         for (let j = i + 1; j < iconData.length; j++) {
             let b = iconData[j];
@@ -75,6 +65,17 @@ function animateIcons() {
 
 animateIcons();
 
+// Responsive Icons Container
+window.addEventListener('resize', () => {
+    containerWidth = container.offsetWidth;
+    containerHeight = container.offsetHeight;
+
+    iconData.forEach(icon => {
+        icon.x = Math.min(icon.x, containerWidth - iconSize);
+        icon.y = Math.min(icon.y, containerHeight - iconSize);
+    });
+});
+
 // Rain Animation
 function createRain(side) {
     const container = document.querySelector(`.rain-${side}`);
@@ -94,7 +95,7 @@ function createRain(side) {
         setInterval(() => {
             const newDrop = drop.cloneNode();
             newDrop.style.left = Math.random() * container.offsetWidth + 'px';
-            newDrop.style.top = -100 + 'px';
+            newDrop.style.top = '-100px';
             newDrop.style.animationDuration = (2 + Math.random() * 2) + 's';
             container.appendChild(newDrop);
             setTimeout(() => newDrop.remove(), 4000);
@@ -105,13 +106,13 @@ function createRain(side) {
 createRain('left');
 createRain('right');
 
-// Change Language
+// Language Toggle Button
 let currentLang = 'en';
 
 document.addEventListener('DOMContentLoaded', () => {
     changeLanguage(currentLang);
     document.querySelector('.toggle-container').classList.add('active');
-    document.getElementById('toggle-ball').textContent = '🇬🇧';
+    document.getElementById('toggle-ball').textContent = 'en';
 });
 
 function toggleLanguage() {
@@ -121,7 +122,7 @@ function toggleLanguage() {
     if (currentLang === 'tr') {
         currentLang = 'en';
         toggle.classList.add('active');
-        ball.textContent = '🇬🇧';
+        ball.textContent = 'en';
     } else {
         currentLang = 'tr';
         toggle.classList.remove('active');
